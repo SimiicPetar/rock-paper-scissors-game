@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<h2>Computer Choices:</h2>
+	<h2 id="computer-choice">  computerChosen </h2>
+
+	<h2>Your Choices:</h2>
+	<h2 id="user-choice"> userChosen </h2>
+
+	<h2>Results:</h2>
+	<h2 id="result"> result </h2>
+
+	<button class="choices" id="rock">rock</button>
+	<button class="choices" id="paper">paper</button>
+	<button class="choices" id="scissors">scissors</button>
+	<br><br>
+	<button onclick="myFunction()">Reset game</button>
+
+
+<script type="text/javascript">
+	let userChosen
+	let computerChosen
+	var result = results()
+	const displayResult = document.getElementById('result')
+	const computerChoice = document.getElementById('computer-choice')
+	const randomNumber = Math.round(Math.random() * (3))
+	const userChoice = document.getElementById('user-choice')
+	const possibleChoices = document.querySelectorAll('.choices')
+
+	possibleChoices.forEach(possibleChoices => possibleChoices.addEventListener('click', (e) => {
+		userChosen = e.target.id
+		generatedComputerChoice()
+		results()
+		userChoice.innerHTML = userChosen
+		computerChoice.innerHTML = computerChosen
+		displayResult.innerHTML = result
+	}))
+
+	function generatedComputerChoice(){
+		if (randomNumber === 1){
+			return computerChosen = 'rock'
+		} else if (randomNumber === 2){
+			return computerChosen = 'paper'
+		} else if (randomNumber === 3){
+			return computerChosen = 'scissors'
+		}
+	}
+
+	function results(){
+		if (computerChosen === userChosen){
+			return result = 'There was a tie'
+		} else if (computerChosen === 'rock' && userChosen === 'paper'){
+			return result = 'you lost'
+		} else if (computerChosen === 'rock' && userChosen=== 'scissors'){
+			return result = 'you win'
+		} else if (computerChosen === 'paper' && userChosen === 'rock'){
+			return result = 'you lost'
+		} else if (computerChosen === 'paper' && userChosen === 'scissors'){
+			return result = 'you win'
+		} else if (computerChosen === 'scissors' && userChosen === 'rock'){
+			return result = 'you win'
+		} else if (computerChosen === 'scissors' && userChosen === 'paper'){
+			return result = 'you lost'
+		}
+	}
+
+	function myFunction(){
+		location.reload();
+	}
+	
+</script>
+</body>
+
+</html>
